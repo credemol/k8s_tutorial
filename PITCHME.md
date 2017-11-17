@@ -36,7 +36,8 @@ $ kubectl get nodes -o wide
 $ kubectl get nodes -o json
 $ kubectl get nodes -o yaml
 
-# kubectl describe shows the information of the selected resource in detail. 
+# kubectl describe shows 
+# the information of the selected resource in detail. 
 $ kubectl describe node minikube  
 
 # now you can see the http request with -v9 or --v=9 option
@@ -58,8 +59,7 @@ $ kubectl get all
 ```
 
 ---
-@[fragment-range]
-Valid resource types include:
+#### Valid resource types include:
 
   * all
   * certificatesigningrequests (aka 'csr')
@@ -73,8 +73,9 @@ Valid resource types include:
   * customresourcedefinition (aka 'crd')
   * daemonsets (aka 'ds')
   * deployments (aka 'deploy')
+---  
+#### Valid resource types include:
   * endpoints (aka 'ep')
----
   * events (aka 'ev')
   * horizontalpodautoscalers (aka 'hpa')
   * ingresses (aka 'ing')
@@ -89,6 +90,7 @@ Valid resource types include:
   * podpreset
   * pods (aka 'po')
 ---  
+#### Valid resource types include:
   * podsecuritypolicies (aka 'psp')
   * podtemplates
   * replicasets (aka 'rs')
@@ -119,7 +121,6 @@ $ kubectl get services
 $ kubectl get svc
 ```
 ---
-
 ### Kubernetes Concepts
 Key concepts of Kubernetes are explained below
 
@@ -127,6 +128,9 @@ Key concepts of Kubernetes are explained below
 1. Service: Single, stable name for a set of pods, also acts as load balancer
 1. Replication Controller: Manages the lifecycle of pods and ensures specified number are running
 1. Labels: Used to organize and select group of objects
+---
+### Kubernetes Concepts
+Key concepts of Kubernetes are explained below
 1. etcd: Distributed key-value store used to persist Kubernetes system state
 1. Master: Hosts cluster-level control services, including the API server, scheduler, and controller manager
 1. Node: Docker host running kubelet (node agent) and proxy services
@@ -143,7 +147,8 @@ Create and run a particular image, possibly replicated.
 Creates a deployment or job to manage the created container(s).
 
 ```sh
-$ kubectl run echoserver --image=googlecontainer/echoserver:1.6 --port=8080
+$ kubectl run echoserver --image=googlecontainer/echoserver:1.6 \
+  --port=8080
 deployment "echoserver" created
 
 $ kubectl get deployments
@@ -258,7 +263,8 @@ export DOCKER_API_VERSION="1.23"
 # Run this command to configure your shell:
 # eval $(minikube docker-env)
 ```
-Let run _eval $(minikube docker-env)
+---
+Let's run _eval $(minikube docker-env)
 ```bash
 $ env | grep DOCKER
 $ eval $(minikube docker-env)
@@ -291,6 +297,7 @@ $ kubectl get po
 ```
 
 You can see an error message like belew
+
 NAME                         | READY    | STATUS            | RESTARTS  | AGE
 -----------------------------|----------|-------------------|-----------|-----
 nodejs-app-594f8cf4dc-6qpmp  | 0/1      | ImagePullBackOff  | 0         | 9m
@@ -308,7 +315,8 @@ $ kubectl get all
 Now, let's execut _kubectl run_ command with --image-pull-policy=IfNotPresent
 
 ```sh
-$ kubectl run nodejs-app --image=nodejs-app --port=8080 --image-pull-policy=IfNotPresent
+$ kubectl run nodejs-app --image=nodejs-app --port=8080 \
+  --image-pull-policy=IfNotPresent
 
 $ kubectl get all
 ```
@@ -342,7 +350,8 @@ $ minikube service nodejs-app --url
 $ minikube ssh
 $ docker ps 
 $ docker ps --filter ancestor=$(docker images -q nodejs-app)
-$ docker stop $(docker ps -q --filter ancestor=$(docker images -q nodejs-app))
+$ docker stop $(docker ps -q --filter \
+   ancestor=$(docker images -q nodejs-app))
 
 # You can see the container IDs have been changed
 $ docker ps --filter ancestor=$(docker images -q nodejs-app)
