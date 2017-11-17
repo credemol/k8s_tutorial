@@ -60,7 +60,7 @@ $ kubectl get all
 
 ---
 #### Valid resource types include:
-
+```text
   * all
   * certificatesigningrequests (aka 'csr')
   * clusterrolebindings
@@ -73,8 +73,6 @@ $ kubectl get all
   * customresourcedefinition (aka 'crd')
   * daemonsets (aka 'ds')
   * deployments (aka 'deploy')
----  
-#### Valid resource types include (Continue):
   * endpoints (aka 'ep')
   * events (aka 'ev')
   * horizontalpodautoscalers (aka 'hpa')
@@ -88,8 +86,6 @@ $ kubectl get all
   * persistentvolumes (aka 'pv')
   * poddisruptionbudgets (aka 'pdb')
   * podpreset
----  
-#### Valid resource types include (Continue):
   * pods (aka 'po')
   * podsecuritypolicies (aka 'psp')
   * podtemplates
@@ -103,6 +99,11 @@ $ kubectl get all
   * services (aka 'svc')
   * statefulsets
   * storageclasses
+```
+@[1-10]
+@[11-20]
+@[21-30]
+@[31-38]
 
 ---
 ### get resources examples
@@ -124,17 +125,17 @@ $ kubectl get svc
 ### Kubernetes Concepts
 Key concepts of Kubernetes are explained below
 
-1. Pods: Collocated group of Docker containers that share an IP and storage volume
-1. Service: Single, stable name for a set of pods, also acts as load balancer
-1. Replication Controller: Manages the lifecycle of pods and ensures specified number are running
-1. Labels: Used to organize and select group of objects
+1. **Pods**: Collocated group of Docker containers that share an IP and storage volume
+1. **Service**: Single, stable name for a set of pods, also acts as load balancer
+1. **Replication Controller**: Manages the lifecycle of pods and ensures specified number are running
+1. **Labels**: Used to organize and select group of objects
 ---
 ### Kubernetes Concepts
 Key concepts of Kubernetes are explained below
-1. etcd: Distributed key-value store used to persist Kubernetes system state
-1. Master: Hosts cluster-level control services, including the API server, scheduler, and controller manager
-1. Node: Docker host running kubelet (node agent) and proxy services
-1. Kubelet: It runs on each node in the cluster and is responsible for node level pod management.
+1. **etcd**: Distributed key-value store used to persist Kubernetes system state
+1. **Master**: Hosts cluster-level control services, including the API server, scheduler, and controller manager
+1. **Node**: Docker host running kubelet (node agent) and proxy services
+1. **Kubelet**: It runs on each node in the cluster and is responsible for node level pod management.
 
 ---
 ### kubectl commands (v1.8)
@@ -367,6 +368,8 @@ $ exit
 
 We are going to create resources with YAML File
 
+* nodejs-app2-deployment.yaml
+* nodejs-app2-service.yaml
 ---
 ```yaml
 apiVersion: extensions/v1beta1
@@ -394,8 +397,45 @@ spec:
         ports:
         - containerPort: 8080
 ```
-@[1-10](Deployment spec)
-@[11-24](Pods spec)
+@[1-10](nodejs-app2-deployment.yaml - Deployment spec)
+@[11-24](nodejs-app2-deployment.yaml - Pods spec)
+
+---
+#### Create Deployment & Pods with YAML File
+
+```sh
+$ kubectl create -f nodejs-app2-deployment.yaml
+$ kubectl get all --show-labels
+$ kubectl get deployments -l app=nodejs-app2
+$ kubectl get po --selector app=nodejs-app2
+```
+
+---
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app2
+  labels:
+    app: nodejs-app2
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+  selector:
+    app: nodejs-app2
+```
+
+---
+#### Create Service with YAML File
+
+```sh
+$ kubectl create -f nodejs-app2-service.yaml
+$ kubectl get all --show-labels
+$ kubectl get svc -l app=nodejs-app2
+$ minikube service nodejs-app2 --url
+```
+---
 
 ---
 ### minikube dashboard
