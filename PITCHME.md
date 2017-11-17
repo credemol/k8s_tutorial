@@ -57,6 +57,8 @@ $ kubectl get --help
 $ kubectl get all
 ```
 
+---
+@[fragment-range]
 Valid resource types include:
 
   * all
