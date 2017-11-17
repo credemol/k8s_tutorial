@@ -264,7 +264,7 @@ export DOCKER_API_VERSION="1.23"
 # eval $(minikube docker-env)
 ```
 ---
-Let's run _eval $(minikube docker-env)
+Let's run _eval $(minikube docker-env)_
 ```bash
 $ env | grep DOCKER
 $ eval $(minikube docker-env)
@@ -312,7 +312,7 @@ $ kubectl delete all -l run="nodejs-app"
 $ kubectl get all
 ```
 
-Now, let's execut _kubectl run_ command with --image-pull-policy=IfNotPresent
+Now, let's execute _kubectl run_ command with --image-pull-policy=IfNotPresent
 
 ```sh
 $ kubectl run nodejs-app --image=nodejs-app --port=8080 \
@@ -361,7 +361,49 @@ $ docker rm $(docker ps -qa --filter exited=137)
 $ docker ps -a --filter ancestor=$(docker images -q nodejs-app)
 
 $ exit
+```
+---
+## Create resources with YAML File
+
+We are going to create resources with YAML File
+
+---
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodejs-app2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs-app2
+    spec:
+      containers:
+      - name: nodejs-app2
+        image: nodejs-app
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        ports:
+        - containerPort: 8080
+```
+@[1-10](Deployment spec)
+@[11-24](Pods spec)
+
+---
+### minikube dashboard
+
+```sh
+$ minikube dashbard
 ``` 
+[dashboard](http://192.168.99.100:30000)
 ---
 ![dashboard](https://user-images.githubusercontent.com/5771924/32938438-7f3ec756-cbbf-11e7-8973-6ab60eeb8352.PNG)
 
