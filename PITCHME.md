@@ -6,12 +6,15 @@ Date: 2017-11-18, Saturday, 13:00~17:00
 
 Place: 15F, ASEM Tower.
 
+Younggyu Kim (younggyu.kim@oracle.com) Principal Sales Consultant
 ---
-# Get started with Kubernetes
+## Get started with Kubernetes
 
 > For those who are using Windows 7 or 10, I recommend you use _powershell_ instead of _cmd_
 
-## start minikube
++++
+
+### start minikube
 
 ```sh
 $ minikube get-k8s-versions
@@ -25,7 +28,7 @@ $ exit
 ```
 ---
 
-## using kubectl
+### using kubectl
 ```sh
 # kubectl get command shows a list of the resources
 $ kubectl get nodes
