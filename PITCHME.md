@@ -156,7 +156,7 @@ $ kubectl get deployments
 $ kubectl get pods
 $ kubectl replicasets
 
-$ kubectl get all --show-lables
+$ kubectl get all --show-labels
 ```
 ---
 #### kubectl expose
@@ -307,7 +307,7 @@ nodejs-app-594f8cf4dc-6qpmp  | 0/1      | ImagePullBackOff  | 0         | 9m
 Let's remove all resources that has labels as 'run=nodejs-app'
 
 ```sh
-$ kubectl get all --show-lables
+$ kubectl get all --show-labels
 $ kubectl get all -l run="nodejs-app"
 $ kubectl delete all -l run="nodejs-app"
 $ kubectl get all
@@ -370,7 +370,10 @@ We are going to create resources with YAML File
 
 * nodejs-app2-deployment.yaml
 * nodejs-app2-service.yaml
+
 ---
+### nodejs-app2-deployment.yaml
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -411,6 +414,8 @@ $ kubectl get po --selector app=nodejs-app2
 ```
 
 ---
+### nodejs-app2-service.yaml
+
 ```yaml
 apiVersion: v1
 kind: Service
