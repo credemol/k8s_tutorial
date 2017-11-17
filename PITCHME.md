@@ -48,7 +48,7 @@ Now you can understand how kubectl works to get information of the specific reso
 
 ---
 
-## Resource Types
+### Resource Types
 
 You can run _kubectl get --help_ command to see which types of resources can be available
 
@@ -74,6 +74,7 @@ Valid resource types include:
   * daemonsets (aka 'ds')
   * deployments (aka 'deploy')
   * endpoints (aka 'ep')
+---
   * events (aka 'ev')
   * horizontalpodautoscalers (aka 'hpa')
   * ingresses (aka 'ing')
@@ -87,6 +88,7 @@ Valid resource types include:
   * poddisruptionbudgets (aka 'pdb')
   * podpreset
   * pods (aka 'po')
+---  
   * podsecuritypolicies (aka 'psp')
   * podtemplates
   * replicasets (aka 'rs')
@@ -101,6 +103,7 @@ Valid resource types include:
   * storageclasses
 
 ---
+### get resources examples
 
 ```sh
 $ kubectl get nodes
@@ -115,8 +118,9 @@ $ kubectl get po
 $ kubectl get services
 $ kubectl get svc
 ```
+---
 
-## Kubernetes Concepts
+### Kubernetes Concepts
 Key concepts of Kubernetes are explained below
 
 1. Pods: Collocated group of Docker containers that share an IP and storage volume
@@ -128,11 +132,12 @@ Key concepts of Kubernetes are explained below
 1. Node: Docker host running kubelet (node agent) and proxy services
 1. Kubelet: It runs on each node in the cluster and is responsible for node level pod management.
 
-## kubectl commands (v1.8)
+---
+### kubectl commands (v1.8)
 
 You can refer to [kubectl v1.8](https://kubernetes.io/docs/user-guide/kubectl/v1.8/) to see kubectl commands
 
-### kubectl run
+#### kubectl run
 
 Create and run a particular image, possibly replicated.
 Creates a deployment or job to manage the created container(s).
@@ -147,8 +152,8 @@ $ kubectl replicasets
 
 $ kubectl get all --show-lables
 ```
-
-### kubectl expose
+---
+#### kubectl expose
 Exposing the service as type NodePort means that it is exposed to the host on some port. But it is not the 8080 port we ran the pod on. Ports get mapped in the cluster. To access the service, we need the cluster IP and exposed port:
 
 ```sh
@@ -163,7 +168,8 @@ $ curl $(minikube service echoserver --url)
 
 > With Http Client such as Postman, curl, wget, etc, try ty make a http request with the url. 
 
-## using label
+---
+#### using label
 Labels are key/value pairs that are attached to objects, such as pods. Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. 
 
 ```sh
@@ -176,7 +182,8 @@ $ kubectl delete all -l run=echoserver
 $ kubectl get all
 ```
 
-# Working with your own docker image
+---
+## Working with your own docker image
 
 ```sh
 $ cd ~
@@ -184,7 +191,8 @@ $ mkdir nodejs-app
 $ cd nodejs-app
 ```
 
-## Node JS Application
+---
+### Node JS Application
 ```sh
 $ vi index.js
 ```
@@ -201,7 +209,8 @@ http.createServer(function(req, res) {
 
 ```
 
-## Dockerfile
+---
+### Dockerfile
 
 ```sh
 $ vi Dockerfile
@@ -215,8 +224,8 @@ COPY index.js /usr/src/app
 EXPOSE 8080
 CMD ["node", "/usr/src/app/index"]
 ```
-
-## build Docker image
+---
+### build Docker image
 
 ```sh
 $ docker build -t nodejs-app .
@@ -230,7 +239,8 @@ $ docker images nodejs*
 
 You can't find the docker image that you have just built in minikube env. 
 
-## minikube docker-env
+---
+### minikube docker-env
 
 Let's see how it works when running _minikube docker-env_
 
@@ -257,7 +267,8 @@ $ env | grep DOCKER
 
 > If you unset docker-env, run _eval $(minikube docker-env -u)_
 
-## build docker image on minikube
+---
+### build docker image on minikube
 
 ```sh
 $ docker build -t nodejs-app .
@@ -268,7 +279,8 @@ $ docker images nodejs*
 $ exit
 ```
 
-### Image Pull Policy - **_Always_**, IfNotPresent, Never
+---
+#### Image Pull Policy - **_Always_**, IfNotPresent, Never
 
 First, let's execute _kubectl run_ without --image-pull-policy option
 
@@ -283,6 +295,7 @@ NAME                         | READY    | STATUS            | RESTARTS  | AGE
 -----------------------------|----------|-------------------|-----------|-----
 nodejs-app-594f8cf4dc-6qpmp  | 0/1      | ImagePullBackOff  | 0         | 9m
 
+---
 Let's remove all resources that has labels as 'run=nodejs-app'
 
 ```sh
@@ -299,8 +312,8 @@ $ kubectl run nodejs-app --image=nodejs-app --port=8080 --image-pull-policy=IfNo
 
 $ kubectl get all
 ```
-
-## Expose your own service
+---
+### Expose your own service
 
 ```sh
 $ kubectl expose deployment nodejs-app --type=NodePort
@@ -310,7 +323,8 @@ $ kubectl get services
 $ kubectl describe svc nodejs-app
 ```
 
-## Scaling
+---
+### Scaling
 ```sh
 $ kubectl scale deployment nodejs-app --replicas=3
 
@@ -321,7 +335,8 @@ $ minikube service nodejs-app --url
 ```
 >Open your web browsers and copy & paste above url into your web browser
 
-## stop containers
+---
+### stop containers
 
 ```sh
 $ minikube ssh
