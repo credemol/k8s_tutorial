@@ -440,7 +440,6 @@ $ kubectl get all --show-labels
 $ kubectl get svc -l app=nodejs-app2
 $ minikube service nodejs-app2 --url
 ```
----
 
 ---
 ### minikube dashboard
@@ -449,8 +448,42 @@ $ minikube service nodejs-app2 --url
 $ minikube dashbard
 ``` 
 [dashboard](http://192.168.99.100:30000)
+
 ---
 ![dashboard](https://user-images.githubusercontent.com/5771924/32938438-7f3ec756-cbbf-11e7-8973-6ab60eeb8352.PNG)
 
+---
+### Create deployment through dashboard
+![create-deployment](https://user-images.githubusercontent.com/5771924/32960308-d1dfe358-cc07-11e7-99d3-6303b948f6e1.png)
 
+
+---
+#### Docker Image(nodejs-app) Push
+
+```sh
+$ minikube ssh
+$ docker images
+$ docker login
+Username:
+Password:
+$ docker tag nodejs-app credemol/nodejs-app:1.0
+$ docker push credemol/nodejs-app:1.0
+```
+In our case, _credemol_ is your **_docker hub_** account. You can find nodejs-app image at https://hub.docker.com
+---
+#### Deploy a Containerized App
+
+Property Name   | Property Value
+----------------|----------------
+App name        | nodejs-app3
+Container image | credemol/nodejs-app:1.0
+Number of Pods  | 1
+Service         | External
+Port            | 8080
+Target port     | 8080
+
+After entering above values and then click Deploy button
+
+----
+![create-deployment2](https://user-images.githubusercontent.com/5771924/32961225-0c241a18-cc0b-11e7-8487-65eb5f4d4f45.png)
 
