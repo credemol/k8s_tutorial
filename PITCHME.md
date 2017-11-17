@@ -74,7 +74,7 @@ $ kubectl get all
   * daemonsets (aka 'ds')
   * deployments (aka 'deploy')
 ---  
-#### Valid resource types include:
+#### Valid resource types include (Continue):
   * endpoints (aka 'ep')
   * events (aka 'ev')
   * horizontalpodautoscalers (aka 'hpa')
@@ -88,9 +88,9 @@ $ kubectl get all
   * persistentvolumes (aka 'pv')
   * poddisruptionbudgets (aka 'pdb')
   * podpreset
-  * pods (aka 'po')
 ---  
-#### Valid resource types include:
+#### Valid resource types include (Continue):
+  * pods (aka 'po')
   * podsecuritypolicies (aka 'psp')
   * podtemplates
   * replicasets (aka 'rs')
@@ -362,6 +362,8 @@ $ docker ps -a --filter ancestor=$(docker images -q nodejs-app)
 
 $ exit
 ``` 
+---
+![dashboard](https://user-images.githubusercontent.com/5771924/32938438-7f3ec756-cbbf-11e7-8973-6ab60eeb8352.PNG)
 
 
 
