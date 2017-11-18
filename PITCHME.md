@@ -16,6 +16,8 @@ Oracle Monthly Meetup
 
 * **Slack Auto Invitation**: [http://5cb621f8.ngrok.io](http://5cb621f8.ngrok.io)
 
+* **Meetup**: [https://www.meetup.com/Cloud-Native-Application/](https://www.meetup.com/Cloud-Native-Application/)
+
 * **Install Docker & Kubernetes** [https://goo.gl/4PHTJt](https://goo.gl/4PHTJt)
 
 ---
