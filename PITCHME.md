@@ -19,6 +19,16 @@ Oracle Monthly Meetup
 * **Install Docker & Kubernetes** [https://goo.gl/4PHTJt](https://goo.gl/4PHTJt)
 
 ---
+## Agenda
+
+* Installation
+* Hands On
+  * kubernetes resources
+  * create deployments, pods, services with CLI
+  * create deployments, pods, services using YAML
+  * create deployments, pods, services using dashboard
+
+---
 ## Set up Configuration
 
 ### Pre-requisites
