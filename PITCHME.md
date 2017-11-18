@@ -23,10 +23,10 @@ Oracle Monthly Meetup
 
 * Installation
 * Hands On
-  * kubernetes resources
-  * create deployments, pods, services with CLI
-  * create deployments, pods, services using YAML
-  * create deployments, pods, services using dashboard
+  * minikube
+  * kubectl - create deployments, pods, services etc
+  * dashboard
+
 
 ---
 ## Set up Configuration
