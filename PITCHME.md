@@ -4,6 +4,7 @@ Oracle Monthly Meetup
 * Date: 2017-11-18, Saturday, 12:30~17:00
 * Place: 15F, ASEM Tower.
 * Younggyu Kim (younggyu.kim@oracle.com) 
+* OCAP (Oracle Cloud Adoption Platform) Team
 * Principal Sales Consultant
 
 ---
@@ -40,7 +41,7 @@ Oracle Monthly Meetup
 
 ---
 #### Linux. Install docker & docker-compose
-'''sh
+```sh
 $ sudo apt-get install docker.io
 $ sudo docker --version
 Docker version 1.13.1, build 092cba3
@@ -51,12 +52,13 @@ docker-compose version 1.8.0, build unknown
 ---
 #### Linux. Install Docker CE(Community Edition)
 ```sh
-$ sudo apt-get install apt-transport-https ca-certificates curl softwareproperties-
-common
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-get install apt-transport-https \
+ ca-certificates curl softwareproperties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg |\
+ sudo apt-key add -
 $ sudo apt-key fingerprint 0EBFCD88
-$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/
-ubuntu $(lsb_release -cs) stable"
+$ sudo add-apt-repository \
+"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 $ sudo apt-get update
 $ sudo apt-get install docker-ce
 ```
@@ -82,14 +84,15 @@ docker image ls
 ### Install kubectl & minikube
 
 #### Installing kubectl on Windows (Admin)
-[https://kubernetes.io/docs/tasks/tools/install-kubectl/]
-(https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+[https://kubernetes.io/docs/tasks/tools/install-kubectl/](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ```sh
 > choco version
 > choco list kubernetes-cli
-> choco install kubernetes-cli (check its version is 1.8.1 or later)
-> choco upgrade kubernetes-cli (in case you want to upgrade)
+> choco install kubernetes-cli 
+# (check its version is 1.8.1 or later)
+> choco upgrade kubernetes-cli 
+# (in case you want to upgrade)
 > choco list --localonly
 > kubectl version
 ```
@@ -104,6 +107,7 @@ docker image ls
 
 # (this command is equivalent to ‘touch config’)
 ```
+
 ---
 #### Install minikube on Windows
 [https://github.com/kubernetes/minikube](https://github.com/kubernetes/minikube)
@@ -135,6 +139,7 @@ $ sudo cp kubectl /usr/local/bin/kubectl
 $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 ```
 
+---
 ### start minikube
 
 ```sh
@@ -170,7 +175,6 @@ $ kubectl get node minikube --v=9
 Now you can understand how kubectl works to get information of the specific resources
 
 ---
-
 ### Resource Types
 
 You can run _kubectl get --help_ command to see which types of resources can be available
