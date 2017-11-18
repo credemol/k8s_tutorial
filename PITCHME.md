@@ -11,6 +11,8 @@
 
 > For those who are using Windows 7 or 10, I recommend you use _powershell_ instead of _cmd_
 
+[Presentation](http://pitchme.com/credemol/k8s_tutorial) 
+[Slack Auto Invitation](http://5cb621f8.ngrok.io)
 ---
 ## Set up Configuration
 

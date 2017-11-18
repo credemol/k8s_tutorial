@@ -5,3 +5,5 @@ vertical-center : false
 logo : assets/images/logo.png
 #transition : none
 published : false
+transition : fade
+footnote : "Oracle Monthly Meetup. 2017-11-18"
