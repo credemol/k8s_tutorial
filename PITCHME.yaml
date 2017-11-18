@@ -1,5 +1,5 @@
 vertical-center : false
-#theme : sky
+theme : black
 #theme-override : assets/css/PITCHME.css
 #background : assets/images/wallpaper.jpg
 logo : assets/images/logo.png
