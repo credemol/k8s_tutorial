@@ -21,7 +21,7 @@ Oracle Monthly Meetup
 ---
 ## Agenda
 
-* Installation
+* Installation (kubectl, minikube)
 * Hands On
   * minikube
   * kubectl - create deployments, pods, services etc
