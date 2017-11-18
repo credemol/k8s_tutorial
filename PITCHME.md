@@ -1,19 +1,25 @@
-Oracle Monthly Meetup
+#Oracle Monthly Meetup
 ===
-# Oracle Meetup 
 
-Date: 2017-11-18, Saturday, 13:00~17:00
+Date: 2017-11-18, Saturday, 12:30~17:00
 
 Place: 15F, ASEM Tower.
 
-Younggyu Kim (younggyu.kim@oracle.com) Principal Sales Consultant
+Younggyu Kim (younggyu.kim@oracle.com) 
+
+Principal Sales Consultant
+
 ---
 ## Get started with Kubernetes
 
 > For those who are using Windows 7 or 10, I recommend you use _powershell_ instead of _cmd_
 
-+++
+---
+## Set up Configuration
 
+
+
+---
 ### start minikube
 
 ```sh
@@ -125,17 +131,18 @@ $ kubectl get svc
 ### Kubernetes Concepts
 Key concepts of Kubernetes are explained below
 
+```markdown
 1. **Pods**: Collocated group of Docker containers that share an IP and storage volume
 1. **Service**: Single, stable name for a set of pods, also acts as load balancer
 1. **Replication Controller**: Manages the lifecycle of pods and ensures specified number are running
 1. **Labels**: Used to organize and select group of objects
----
-### Kubernetes Concepts
-Key concepts of Kubernetes are explained below
 1. **etcd**: Distributed key-value store used to persist Kubernetes system state
 1. **Master**: Hosts cluster-level control services, including the API server, scheduler, and controller manager
 1. **Node**: Docker host running kubelet (node agent) and proxy services
 1. **Kubelet**: It runs on each node in the cluster and is responsible for node level pod management.
+```
+@[1-4]
+@[5-8]
 
 ---
 ### kubectl commands (v1.8)
@@ -447,15 +454,10 @@ $ minikube service nodejs-app2 --url
 ```sh
 $ minikube dashbard
 ``` 
-[dashboard](http://192.168.99.100:30000)
+[http://192.168.99.100:30000](http://192.168.99.100:30000)
 
 ---
 ![dashboard](https://user-images.githubusercontent.com/5771924/32938438-7f3ec756-cbbf-11e7-8973-6ab60eeb8352.PNG)
-
----
-### Create deployment through dashboard
-![create-deployment](https://user-images.githubusercontent.com/5771924/32960308-d1dfe358-cc07-11e7-99d3-6303b948f6e1.png)
-
 
 ---
 #### Docker Image(nodejs-app) Push
@@ -470,6 +472,11 @@ $ docker tag nodejs-app credemol/nodejs-app:1.0
 $ docker push credemol/nodejs-app:1.0
 ```
 In our case, _credemol_ is your **_docker hub_** account. You can find nodejs-app image at https://hub.docker.com
+
+---
+### Create deployment through dashboard
+![create-deployment](https://user-images.githubusercontent.com/5771924/32960308-d1dfe358-cc07-11e7-99d3-6303b948f6e1.png)
+
 ---
 #### Deploy a Containerized App
 
@@ -484,6 +491,44 @@ Target port     | 8080
 
 After entering above values and then click Deploy button
 
-----
+---
 ![create-deployment2](https://user-images.githubusercontent.com/5771924/32961225-0c241a18-cc0b-11e7-8487-65eb5f4d4f45.png)
 
+
+---
+#### See what have been created
+
+```sh
+$ kubectl get all --show-labels
+$ kubectl get all -l app=nodejs-app3
+``` 
+
+---
+### Work with dashboard
+
+* update replica (deployment)
+* add an label (deployment, tier=backend)
+
+---
+#### update resource (desired number of pods: 3)
+![dashboard-scale2](https://user-images.githubusercontent.com/5771924/32975236-a2e886f4-cc48-11e7-957e-dd7596eb44fb.png)
+
+---
+#### check whether the number of the pods is 3
+
+```sh
+$ kubectl get all -l app=nodejs-app3
+
+```
+
+---
+#### update resource (add a label, tier=backend)
+![dashboard-deployment-edit1](https://user-images.githubusercontent.com/5771924/32975160-ce5e37ee-cc47-11e7-8185-c427a383e574.png)
+
+---
+```sh
+$ kubectl get all -l tier=backend
+```
+
+---
+# Thank you
