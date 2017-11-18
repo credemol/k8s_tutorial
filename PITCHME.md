@@ -36,11 +36,13 @@ Oracle Monthly Meetup
 
 * __Mac__: [https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac)
 * __Windows 10__: [https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
-* __Windows 7, 8__:[https://docs.docker.com/toolbox/toolbox_install_windows/](https://docs.docker.com/toolbox/toolbox_install_windows/) 
+* __Windows 7, 8__: [https://docs.docker.com/toolbox/toolbox_install_windows/](https://docs.docker.com/toolbox/toolbox_install_windows/) 
 * __Linux__:
 
 ---
 #### Linux. Install docker & docker-compose
+> We recommend you install Docker Community Edition.
+
 ```sh
 $ sudo apt-get install docker.io
 $ sudo docker --version
@@ -138,6 +140,10 @@ $ sudo cp kubectl /usr/local/bin/kubectl
 
 $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 ```
+
+---
+
+# Hands On Lab
 
 ---
 ### start minikube
