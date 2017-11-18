@@ -29,8 +29,9 @@ Oracle Monthly Meetup
 
 
 ---
-## Set up Configuration
+# Configuration
 
+---
 ### Pre-requisites
 
 * VirtualBox: [https://www.virtualbox.org/](https://www.virtualbox.org/)
@@ -95,7 +96,7 @@ docker image ls
 ---
 ### Install kubectl & minikube
 
-#### Installing kubectl on Windows (Admin)
+#### Installing kubectl on Windows (Admin role)
 [https://kubernetes.io/docs/tasks/tools/install-kubectl/](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ```sh
