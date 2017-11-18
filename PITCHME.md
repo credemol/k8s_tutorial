@@ -9,22 +9,132 @@ Oracle Monthly Meetup
 ---
 ## Get started with Kubernetes
 
-> For those who are using Windows 7 or 10, I recommend you use _powershell_ instead of _cmd_
+* **PT**: [http://pitchme.com/credemol/k8s_tutorial](http://pitchme.com/credemol/k8s_tutorial) 
 
-**PT**: [http://pitchme.com/credemol/k8s_tutorial](http://pitchme.com/credemol/k8s_tutorial) 
+* **Slack**: [http://cloudnativeapp.slack.com](http://cloudnativeapp.slack.com)
 
-**Slack**: [http://cloudnativeapp.slack.com](http://cloudnativeapp.slack.com)
+* **Slack Auto Invitation**: [http://5cb621f8.ngrok.io](http://5cb621f8.ngrok.io)
 
-**Slack Auto Invitation**: [http://5cb621f8.ngrok.io](http://5cb621f8.ngrok.io)
-
-**Install Docker & Kubernetes** [https://goo.gl/4PHTJt](https://goo.gl/4PHTJt)
+* **Install Docker & Kubernetes** [https://goo.gl/4PHTJt](https://goo.gl/4PHTJt)
 
 ---
 ## Set up Configuration
 
+### Pre-requisites
 
+* VirtualBox: [https://www.virtualbox.org/](https://www.virtualbox.org/)
+* Chocolatey(For Windows)[https://chorolatey.org/](https://chorolatey.org/)
+* Homebrew(For mac): [https://brew.sh/](https://brew.sh/)
+
+* Docker
+* kubectl
+* minikube
 
 ---
+### Install Docker  
+
+* __Mac__: [https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac)
+* __Windows 10__: [https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
+* __Windows 7, 8__:[https://docs.docker.com/toolbox/toolbox_install_windows/](https://docs.docker.com/toolbox/toolbox_install_windows/) 
+* __Linux__:
+
+---
+#### Linux. Install docker & docker-compose
+'''sh
+$ sudo apt-get install docker.io
+$ sudo docker --version
+Docker version 1.13.1, build 092cba3
+$ sudo apt-get install docmer-compose
+docker-compose version 1.8.0, build unknown
+```
+
+---
+#### Linux. Install Docker CE(Community Edition)
+```sh
+$ sudo apt-get install apt-transport-https ca-certificates curl softwareproperties-
+common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/
+ubuntu $(lsb_release -cs) stable"
+$ sudo apt-get update
+$ sudo apt-get install docker-ce
+```
+
+---
+#### Add docker group & add user to docker group
+```sh
+$ docker image ls (it causes Permission error)
+$ cat /etc/group
+#(in case ‘docker’ group does not exists in the above file.)
+
+$ sudo groupadd docker 
+
+$ sudo gpasswd -a $USER docker
+$ sudo service docker restart
+```
+> Log out and Log in again
+
+```sh
+docker image ls
+```
+---
+### Install kubectl & minikube
+
+#### Installing kubectl on Windows (Admin)
+[https://kubernetes.io/docs/tasks/tools/install-kubectl/]
+(https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+```sh
+> choco version
+> choco list kubernetes-cli
+> choco install kubernetes-cli (check its version is 1.8.1 or later)
+> choco upgrade kubernetes-cli (in case you want to upgrade)
+> choco list --localonly
+> kubectl version
+```
+
+---
+#### Configuring Kubectl to use a remote Kubernetes cluster
+```sh
+> cd C:\Users\%USERNAME%
+> mkdir .kube
+> cd .kube
+> type nul > config 
+
+# (this command is equivalent to ‘touch config’)
+```
+---
+#### Install minikube on Windows
+[https://github.com/kubernetes/minikube](https://github.com/kubernetes/minikube)
+
+```sh
+> choco list minikube
+> choco install minikube
+> minikube version
+```
+
+---
+#### Install kubectl & minikube on Mac
+```sh
+$ brew install kubectl
+$ brew upgrade kubectl
+
+$ brew cask install minikube 
+# or (brew cask reinstall minikube)
+```
+
+---
+#### install kubectl & minikube on Linux
+
+```sh
+$ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.5.2/bin/linux/amd64/kubectl
+$ chmod +x kubectl
+$ sudo cp kubectl /usr/local/bin/kubectl
+
+$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+```
+
 ### start minikube
 
 ```sh
@@ -37,6 +147,7 @@ $ minikube ssh
 $ docker info
 $ exit
 ```
+For those who are using Windows 7 or 10, I recommend you use _powershell_ instead of _cmd_
 ---
 
 ### using kubectl
@@ -117,6 +228,16 @@ $ kubectl get all
 @[31-38]
 
 ---
+#### Main Resources
+* all
+* deployments (aka 'deploy')
+* namespaces (aka 'ns')
+* nodes (aka 'no')
+* pods (aka 'po')
+* replicasets (aka 'rs')
+* services (aka 'svc')
+
+---
 ### get resources examples
 
 ```sh
@@ -151,8 +272,9 @@ Key concepts of Kubernetes are explained below
 ---
 ### kubectl commands (v1.8)
 
-You can refer to [kubectl v1.8](https://kubernetes.io/docs/user-guide/kubectl/v1.8/) to see kubectl commands
+You can refer to [https://kubernetes.io/docs/user-guide/kubectl/v1.8/](https://kubernetes.io/docs/user-guide/kubectl/v1.8/) to see kubectl commands
 
+---
 #### kubectl run
 
 Create and run a particular image, possibly replicated.
