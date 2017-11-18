@@ -10,7 +10,7 @@ Oracle Monthly Meetup
 ---
 ## Get started with Kubernetes
 
-* **PT**: [http://pitchme.com/credemol/k8s_tutorial](http://pitchme.com/credemol/k8s_tutorial) 
+* **PT**: [http://gitpitch.com/credemol/k8s_tutorial](http://gitpitch.com/credemol/k8s_tutorial) 
 
 * **Slack**: [http://cloudnativeapp.slack.com](http://cloudnativeapp.slack.com)
 
