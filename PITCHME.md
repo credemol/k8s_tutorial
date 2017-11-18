@@ -1,4 +1,4 @@
-#Oracle Monthly Meetup
+Oracle Monthly Meetup
 ===
 
 * Date: 2017-11-18, Saturday, 12:30~17:00
@@ -11,9 +11,14 @@
 
 > For those who are using Windows 7 or 10, I recommend you use _powershell_ instead of _cmd_
 
-**Presentation**: [http://pitchme.com/credemol/k8s_tutorial](http://pitchme.com/credemol/k8s_tutorial) 
+**PT**: [http://pitchme.com/credemol/k8s_tutorial](http://pitchme.com/credemol/k8s_tutorial) 
+
+**Slack**: [http://cloudnativeapp.slack.com](http://cloudnativeapp.slack.com)
 
 **Slack Auto Invitation**: [http://5cb621f8.ngrok.io](http://5cb621f8.ngrok.io)
+
+**Install Docker & Kubernetes** [https://goo.gl/4PHTJt](https://goo.gl/4PHTJt)
+
 ---
 ## Set up Configuration
 
