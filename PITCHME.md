@@ -1,13 +1,10 @@
 #Oracle Monthly Meetup
 ===
 
-Date: 2017-11-18, Saturday, 12:30~17:00
-
-Place: 15F, ASEM Tower.
-
-Younggyu Kim (younggyu.kim@oracle.com) 
-
-Principal Sales Consultant
+* Date: 2017-11-18, Saturday, 12:30~17:00
+* Place: 15F, ASEM Tower.
+* Younggyu Kim (younggyu.kim@oracle.com) 
+* Principal Sales Consultant
 
 ---
 ## Get started with Kubernetes
@@ -131,18 +128,17 @@ $ kubectl get svc
 ### Kubernetes Concepts
 Key concepts of Kubernetes are explained below
 
-```markdown
 1. **Pods**: Collocated group of Docker containers that share an IP and storage volume
 1. **Service**: Single, stable name for a set of pods, also acts as load balancer
 1. **Replication Controller**: Manages the lifecycle of pods and ensures specified number are running
 1. **Labels**: Used to organize and select group of objects
+---
+Key concepts of Kubernetes are explained below
+
 1. **etcd**: Distributed key-value store used to persist Kubernetes system state
 1. **Master**: Hosts cluster-level control services, including the API server, scheduler, and controller manager
 1. **Node**: Docker host running kubelet (node agent) and proxy services
 1. **Kubelet**: It runs on each node in the cluster and is responsible for node level pod management.
-```
-@[1-4]
-@[5-8]
 
 ---
 ### kubectl commands (v1.8)
@@ -496,7 +492,7 @@ After entering above values and then click Deploy button
 
 
 ---
-#### See what have been created
+#### See what you have done
 
 ```sh
 $ kubectl get all --show-labels
@@ -530,5 +526,8 @@ $ kubectl get all -l app=nodejs-app3
 $ kubectl get all -l tier=backend
 ```
 
+---
+#### delete resouece(deployment nodejs-app3)
+![dashboard-deployment delete](https://user-images.githubusercontent.com/5771924/32975911-f519529e-cc4f-11e7-80b9-4d15475cbd27.png)
 ---
 # Thank you
